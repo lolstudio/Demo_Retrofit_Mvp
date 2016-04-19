@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RetrofitClient {
     static RetrofitClient client = null;
-    private static final String TAG = "okhttp";
+    private static final String TAG = "RetrofitClient";
     protected static final Object object = new Object();
 
 //    final MeiZhiService service;
@@ -42,7 +42,7 @@ public class RetrofitClient {
         service = retrofit.create(MeiZhiService.class);
     }*/
 
-    public <T> T creatService(Class<?> cls) {
+    public <T> T creatService(Class<T> cls) {
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .connectTimeout(15, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
@@ -53,7 +53,7 @@ public class RetrofitClient {
                 .baseUrl("http://gank.io/api/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
-        return (T) retrofit.create(cls);
+        return retrofit.create(cls);
     }
 
     public static RetrofitClient getInstance() {

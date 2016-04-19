@@ -2,8 +2,10 @@ package com.lolstudio.retrofit.presenter;
 
 
 import com.lolstudio.retrofit.model.MeiZhiModel;
-import com.lolstudio.retrofit.model.MeiZhiModelBean;
+import com.lolstudio.retrofit.model.MeiZhiModelBean.Results;
 import com.lolstudio.retrofit.view.MeiZhiView;
+
+import java.util.List;
 
 /**
  * Created by lolstudio on 2016/4/18.
@@ -29,7 +31,7 @@ public class MeiZhiPresenter implements BasePresenter, IMeiZhiPresenter {
     }
 
     @Override
-    public void loadDataSuccess(MeiZhiModelBean bean) {
+    public void loadDataSuccess(List<Results> bean) {
         mWeatherView.showData(bean);
         mWeatherView.hideProgress();
     }

@@ -21,7 +21,7 @@ public class MeiZhiModelBean {
         this.error = error;
     }
 
-    public boolean getError() {
+    public boolean isError() {
         return this.error;
     }
 

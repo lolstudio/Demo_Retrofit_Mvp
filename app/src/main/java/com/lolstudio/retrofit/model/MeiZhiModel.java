@@ -20,11 +20,14 @@ public class MeiZhiModel {
     }
 
     public void loadData() {
-        MeiZhiService meiZhiService = RetrofitClient.getInstance().creatService(MeiZhiService.class);
-        meiZhiService.getMeiZhi(1).enqueue(new Callback<MeiZhiModelBean>() {
+        RetrofitClient.getInstance().creatService(MeiZhiService.class).getMeiZhi(1).enqueue(new Callback<MeiZhiModelBean>() {
             @Override
             public void onResponse(Call<MeiZhiModelBean> call, Response<MeiZhiModelBean> response) {
-                presenter.loadDataSuccess(response.body());
+                if (!response.body().isError()) {
+                    presenter.loadDataSuccess(response.body().getResults());
+                } else {
+                    presenter.loadDataFailed();
+                }
             }
 
             @Override
