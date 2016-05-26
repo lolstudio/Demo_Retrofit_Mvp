@@ -60,6 +60,7 @@ public class RetrofitClient {
             Request authorised  = request.newBuilder().url(builder.build())
                     .build();
             return chain.proceed(authorised);*/
+
             long t1 = System.nanoTime();
             Log.d(TAG, String.format("Sending request %s on %s%n%s",
                     request.url(), chain.connection(), request.headers()));
