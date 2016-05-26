@@ -56,7 +56,10 @@ public class RetrofitClient {
         @Override
         public Response intercept(Interceptor.Chain chain) throws IOException {
             Request request = chain.request();
-
+            /*HttpUrl.Builder builder = request.url().newBuilder().addQueryParameter("sign","");
+            Request authorised  = request.newBuilder().url(builder.build())
+                    .build();
+            return chain.proceed(authorised);*/
             long t1 = System.nanoTime();
             Log.d(TAG, String.format("Sending request %s on %s%n%s",
                     request.url(), chain.connection(), request.headers()));
